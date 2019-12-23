@@ -1,18 +1,20 @@
 {
-  "name": "form-service",
+  "name": "formio-service",
   "version": "1.0.0",
-  "description": "",
+  "description": "formIo service",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "NODE_ENV=development nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jayadeep KM",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mongoose": "^5.8.2",
     "morgan": "^1.9.1",
     "nodemon": "^2.0.2"
   }
