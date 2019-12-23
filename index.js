@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const formController = require('./controllers/form.controller');
 
 require('dotenv').config();
@@ -19,6 +20,7 @@ const initServer = async (app, port, mongoUrl) => {
   });
 
   app.use(bodyParser.json());
+  app.use(cors());
 
   const logType = process.env.NODE_ENV == 'development' ? 'dev' : 'tiny';
   app.use(morgan(logType));
@@ -28,6 +30,17 @@ const initServer = async (app, port, mongoUrl) => {
   })
 
   app.get('/form', formController.getForms);
+  app.get('/form/:id', formController.getForm);
+  app.delete('/form/:id', formController.deleteForm);
+  app.post('/form', formController.saveForm);
+  app.post('/form/:id', formController.editForm);
+
+  // catch 404
+  app.use(function (_, res) {
+    res.status(404).json({
+      message: '404 not found'
+    })
+  });
 }
 
 initServer(app, PORT, MONGO_URL);

@@ -1,16 +1,17 @@
 const mongoose = require('mongoose');
-const SchemaTypes = { mongoose };
+const Types = mongoose.SchemaTypes;
 
 const Model = mongoose.model('form', {
   name: String,
   path: String,
-  schema: SchemaTypes.Mixed,
+  tags: [String],
+  structure: Types.Mixed,
   createdAt: {
-    type: SchemaTypes.Date,
+    type: Types.Date,
     default: Date.now
   },
   updatedAt: {
-    type: SchemaTypes.Date,
+    type: Types.Date,
     default: Date.now
   },
 });
