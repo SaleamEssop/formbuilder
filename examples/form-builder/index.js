@@ -1,9 +1,12 @@
+import "formiojs/dist/formio.full.min.css"
 import { Formio } from 'formiojs';
 import $ from "jquery";
+
 let schema = {
   components: []
 };
 const apiUrl = 'http://localhost:3000/form';
+const formViewerUrl = 'http://localhost:42035/#'
 
 Formio.builder(document.getElementById('builder'), {}, {}).then(function (builder) {
   builder.on('saveComponent', function () {
@@ -35,5 +38,8 @@ $('#save').click(async () => {
     tags: ['law', 'ok'],
     path: 'lawyer/first'
   });
-  console.log(response);
+  const id = response._id;
+  console.log(`saved ${id}`);
+  $('#form-link').text(`Open form ${id}`);
+  $('#form-link').attr('href', `${formViewerUrl}${id}`);
 })
