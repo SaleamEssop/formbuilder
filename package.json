@@ -2,6 +2,10 @@
   "name": "formio-service",
   "version": "1.0.0",
   "description": "formIo service",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SaleamEssop/formbuilder"
+  },
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
